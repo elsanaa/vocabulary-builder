@@ -20,5 +20,5 @@ function App() {
     </div>
   );
 }
-//  bg-[#E8B298]
+
 export default App;
