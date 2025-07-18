@@ -4,261 +4,124 @@ import React from "react";
 import { useState } from "react";
 
 function Words() {
-    let [display, setDisplay] = useState(false);
-
+      let [level, SetLevel] = useState();
    
-    function show() {
-        setDisplay(true)
-    }
-    function wordList() {
-        if (display == false) {
-            return (
-                <div onClick={show} className="h-[300px] w-[250px] flex justify-start items-center">
-                    <div className="text-[20px] text-black w-[250px] cursor-grab active:cursor-grabbing h-[60px] bg-[#DAEBE3] flex justify-center items-center rounded-[15px]">
-                        Display words
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <div onClick={hide} className="py-[120px] flex justify-start items-center ">
-                        <div className="text-[20px] text-black w-[250px] cursor-grab active:cursor-grabbing h-[60px] bg-[#DAEBE3] flex justify-center items-center rounded-[15px]">
-                            Display words
-                        </div>
-                    </div>
-                    <div className="flex flex-row pb-[30px]">
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    gloomy
-                                </div>
-                                <div className="text-[#657166]">
-                                    (glu'mi)
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                dark ; dim ; in low spririts
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                My cousin <b>gloomy</b> becaause his best friend had moved away.
-                            </div>
-                        </div>
-    <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-        <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-            <div>
-                molest
-            </div>
-            <div className="text-[#657166]">
-                (mə'lest)
-            </div>
-        </div>
-        <div className="pt-[10px]">
-            interfere with and trouble ; disturb
-        </div>
-        <div className="pt-[10px]">
-            <div className="text-[#E57734]">Example:</div>
-                the gand did a thorough job of <b>molesting</b> the  people in the park.
-        </div>
-    </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    feeble
-                                </div>
-                                <div className="text-[#657166]">
-                                    (fe'bl)
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                weak
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                    The <b>feeble</b> old man collapsed on the sidewalk.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    cease
-                                </div>
-                                <div className="text-[#657166]">
-                                    (ses)
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                stop
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                <b>Cease</b> trying to do more than you can.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex flex-row pb-[30px]">
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    outlaw
-                                </div>
-                                <div className="text-[#657166]">
-                                    (out'lo)
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                an exile ; an outcast ; a criminal ; to declare unlawful
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                    The best -known <b>outlaw</b> of the American West was jesse James.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    promote
-                                </div>
-                                <div className="text-[#657166]">
-                                    (pre mot')
-                                </div>
-                            </div>
-                            <div className="pt-[5px]">
-                                raise in rank or importance ; help to grow and develp ; help to organize
-                            </div>
-                            <div className="pt-[3px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                Students who pass the test will be <b>promoted</b> to the next grade.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    excessive
-                                </div>
-                                <div className="text-[#657166]">
-                                    (ek ses' iv)
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                too much ; too great ; extreme
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                Numerous attempts have been made to outlaw jet planets that make <b>excessive</b> noise.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    retain
-                                </div>
-                                <div className="text-[#657166]">
-                                    (ri tan')
-                                </div>
-                                </div>
-                                <div className="pt-[6px]">
-                                    keep ; remember ; employ by payment of a fee
-                                </div>
-                                <div className="pt-[6px]">
-                                    <div className="text-[#E57734]">Example:</div>
-                                    China dishes have the unique quality of <b>retaining</b> heat longer than metal pans.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex flex-row pb-[30px]">
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    absurd
-                                </div>
-                                <div className="text-[#657166]">
-                                    (ab serd')
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                plainly not true or sensible ; foolish
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                It was <b>absurd</b> to believe the fisherman's tall tale.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    conflict
-                                </div>
-                                <div className="text-[#657166]">
-                                   (kan' flikt)
-                                </div>
-                            </div>
-                            <div className="pt-[5px]">
-                                direct opposition ; disagreement
-                            </div>
-                            <div className="pt-[5px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                Our opinions about the company's success in the last decade are in <b>conflict</b> with what the records show.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    minority
-                                </div>
-                                <div className="text-[#657166]">
-                                    (me nor' e te)
-                                </div>
-                            </div>
-                            <div className="pt-[5px]">
-                                smaller number of part ; less than half
-                            </div>
-                            <div className="pt-[5px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                Only a small <b>minority</b> of the neighborhood didn't want a new park.
-                            </div>
-                        </div>
-                        <div className="w-[280px] h-[200px] bg-[#FDE8D3] mr-[30px] px-[10px] rounded-[20px]">
-                            <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] flex items-center">
-                                <div>
-                                    fiction
-                                </div>
-                                <div className="text-[#657166]">
-                                    (fik'shen)
-                                </div>
-                            </div>
-                            <div className="pt-[10px]">
-                                that which is imagined or made up
-                            </div>
-                            <div className="pt-[10px]">
-                                <div className="text-[#E57734]">Example:</div>
-                                The story that the president had died was <b>fiction</b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
+   function wordList() {
+        if (level === "A1") {
+            return [
+                { word: "building ", pronunciation: "(bɪldɪŋ)", meaning: "Building is the process of making something.", example: "Building Lego cities and towns is the favorite activity of many kids." },
+                { word: "audible", pronunciation: "(o de bel)", meaning: "able to be heard", example: "From across the room the teachr's voice was barely audible." },
+                { word: "decrease", pronunciation: "(di kres')", meaning: "make orbecome less", example: "As the kept spending money, the amount he had saved decreased." },
+                { word: "pledge", pronunciation: "(plej)", meaning: "promise", example: "Monte was reluctant to pledge his loyalty to his new girlfriend." },
+                { word: "casual", pronunciation: "(kazh u el)", meaning: "happening by chance ; not planned or expected; not calling attention to itself", example: "." },
+
+            ]
+        } else if (level === "A2") {
+            return [
+                { word: "data", pronunciation: "(dat' e)", meaning: "facts ; information", example: "The data about the bank robbery were given to the F.B.I" },
+                { word: "qualify", pronunciation: "(kwal' e-fi)", meaning: "become fit ; show that you are able", example: "I am trying to qualify for the job that is now vacant." },
+                { word: "typical", pronunciation: "(tip' e kel)", meaning: "usual ; of a kind", example: "The sinister character in the movie wore a typical costume, dark shirt, loud tie, and tight jacket." },
+                { word: "talent", pronunciation: "(tal'ent)", meaning: "natural ability", example: "Medori's talent was noted when she was in first grade." },
+                { word: "topic", pronunciation: "(tap' ik)", meaning: "subject that people think, write ,or talk about", example: "Predicting the weather is our favorite topic of conversation" },
+                { word: "popular", pronunciation: "(pop' u lar)", meaning: "liked by most people", example: "The Beatles wrote many popular songs." },
+
+            ]
+        } else if (level === "B1") {
+            return [
+                { word: "abandon", pronunciation: "(e ban' den)", meaning: "desert ; leave wuthout planning to come back ; quit ", example: "When Roy abandoned his family,  the police went looking for him." },
+                { word: "keen", pronunciation: "(ken)", meaning: "sharp ; eager ; intense ; senstive", example: "he butcher's keen knife cut through the meat." },
+                { word: "jealous", pronunciation: "(jel' es)", meaning: "afraid that the one you love might prefer someone else ; wanting what someone else has", example: "A detective  was hired by the jealous widow to find the boyfriend who had abandoned her." },
+                { word: "tact", pronunciation: "(takt)", meaning: "ability to say the night thing", example: "My aunt never hurts anyone's feelings because she always uses tact." },
+                { word: "oath", pronunciation: "(oth)", meaning: "a promise that something is true ; a curse ", example: "The president will take the oath of office tomarrow." },
+                { word: "vacant", pronunciation: "(va' kent)", meaning: "empty ; not filled ", example: "I put my coat on that vacant seat." },
+                { word: "hardship", pronunciation: "(hard' ship)", meaning: "something that is hard to bear ; difficulty ", example: "The fighter had to face many hardships before he became champion." },
+
+            ]
+        } else if (level === "B2") {
+            return [
+                { word: "detect", pronunciation: "(di' tekt)", meaning: "find out ; discover", example: "Sam Spade detected that the importaant papers had vanished." },
+                { word: "defect", pronunciation: "(di' fekt)", meaning: "fault ; that which is wrong", example: ".His theory of the formation of Our world was filled with defects" },
+                { word: "thorough", pronunciation: "(ther' o)", meaning: "being all that is needed; complete", example: "The police made  a thorough search of the house after the crime had been reported." },
+                { word: "amateur", pronunciation: "(am' e ter)", meaning: "personwho does something for pleasur, not for money of as a prefession", example: "After his song , Don was told that he wasn't good enough to be anything but an amateur." },
+                { word: "security", pronunciation: "(si kyur'e te)", meaning: "freedom from danger , care, or fear,; feeling or condition of being safe", example: "Our janitor likes the secutiy of having all doors locked at night." },
+                { word: "document", pronunciation: "(dok' u ment)", meaning: "something handwritten or printed that gives  information or proof of some fact", example: "We were reluctant to destroy important document." },
+                { word: "urban", pronunciation: "(er' ben)", meaning: "of or having to do with cities or towns", example: "I plan to exchange my urban location for rural one." },
+                { word: "pollute", pronunciation: "(pe loot')", meaning: "make dirty", example: "The Atlantic Ocean is in danger of becoming polluted" },
+
+            ]
+        } else if (level === "C1") {
+            return [
+                { word: "gloomy", pronunciation: "(glu'mi)", meaning: " dark ; dim ; in low spririts", example: "My cousin gloomy becaause his best friend had moved away." },
+                { word: "frank", pronunciation: "(frangk)", meaning: "free in expressing ones real thoughts, opinions one feelings ; not hiding what is in one's mind", example: "." },
+                { word: "reveal", pronunciation: "(ri vel')", meaning: "make known", example: "The evidence was revealed only after hours of questioning." },
+                { word: "urgent", pronunciation: "(er' jent)", meaning: "demanding immediate action or attention; important", example: "." },
+                { word: "prohibit", pronunciation: "(pro' hib' it)", meaning: "forbid by law or authority", example: "Many homeowner prohibit other from walking on their praperty." },
+                { word: "migrate", pronunciation: "(m i frat)", meaning: "move from one place to another", example: "The fruit pickers migrated to whenver they could find work." },
+                { word: "vessel", pronunciation: "(ves' el)", meaning: "a ship ; a hollow container; tube containing body fluid", example: "." },
+                { word: "presist", pronunciation: "(per sist')", meaning: "continue firmly; refuse to stop or be changed", example: "The humid weather presisted all summer." },
+                { word: "gleam", pronunciation: "(fle m)", meaning: "a flash or beam of light", example: "A gleam of light shone trhough the prison wwindow." },
+
+            ]
+        } else if (level === "C2") {
+            return [
+                { word: " molest", pronunciation: "(mə'lest)", meaning: " interfere with and trouble ; disturb", example: "the gand did a thorough job of molesting the  people in the park." },
+                { word: "feeble", pronunciation: "(fe'bl)", meaning: "weak", example: "The feeble old man collapsed on the sidewalk." },
+                { word: "cease", pronunciation: "(ses)", meaning: "stop", example: "Cease trying to do more than you can." },
+                { word: "outlaw", pronunciation: "(out'lo)", meaning: " an exile ; an outcast ; a criminal ; to declare unlawful", example: " The best-known outlaw of the American West was jesse James." },
+                { word: "promote", pronunciation: "(pre mot')", meaning: "raise in rank or importance ; help to grow and develp ; help to orgnize", example: "Students who pass the test will be promoted to the next grade." },
+                { word: " excessive", pronunciation: "(ek ses' iv)", meaning: "too much ; too great ; extreme", example: "Numerous attempts have been made to outlaw jet planets that make excessive noise." },
+                { word: "retain", pronunciation: "(ri tan')", meaning: "keep ; remember ; employ by payment of a fee", example: "China dishes have the unique quality of retaining heat longer than metal pans." },
+                { word: "absurd", pronunciation: "(ab serd')", meaning: " plainly not true or sensible ; foolish", example: "It was absurd to believe the fisherman's tall tale." },
+
+            ]
+        } 
+        else {
+            return [];
         }
+
     }
 
-    function hide() {
-        setDisplay(false)
+    function handleChange(event) {
+        let level = event.target.value;
+        SetLevel(level);
+
     }
 
     return (
         <div>
-            <div className="flex justify-center h-[100px] items-end">
-                <input className="w-[900px] rounded-[30px] h-[60px] pl-[30px] mr-[5px] outline-none " placeholder="Search" />
-                <div className="w-[100px] h-[60px] bg-[#CFDBC4] rounded-[30px] flex justify-center items-center cursor-pointer"><FontAwesomeIcon icon={faSearch} /></div>
+            <div className="h-[300px] flex items-center mb-[65px] ">
+                <select className="w-[250px] h-[30px] cursor-grab active:cursor-grabbing" onChange={handleChange}>
+                    <option value="">Select Level</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
             </div>
-            <div>
-                {wordList()}
-              
+            <div className="w-[1200px] flex flex-wrap ">
+                {wordList(level).map((item) => (
+
+                    <div className="w-[270px] h-[250px] bg-[#FDE8D3] mr-[30px] mb-[20px] px-[10px] rounded-[20px] ">
+                        <div className="border-solid border-b-[1px] flex justify-between h-[40px] border-[#F3C3B2] items-center">
+                            <div>{item.word}</div>
+                            <div className="text-[#657166]">{item.pronunciation}</div>
+                        </div>
+                        <div className="pt-[10px]">{item.meaning}</div>
+                        <div className="pt-[10px]">
+                            <div className="text-[#E57734]">Example:</div>
+                            {item.example}
+                        </div>
+                    </div>
+                ))}
             </div>
+
         </div>
-    )
+    );
 }
+
+  
 
 export default Words;
 
