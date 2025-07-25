@@ -5,9 +5,9 @@ import React from "react";
 
 function About() {
     return (
-        <div className=" text-[20px] h-[300px] pt-[30px] flex justify-between">
+        <div className=" text-[20px] flex justify-between ">
             <div className="flex flex-col">
-            <div className="font-black pb-[10px]">
+            <div className="C pb-[10px]">
                 Why Online Vocabulary Builder
             </div>
             <div>

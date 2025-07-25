@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function Menu() {
-    return (
+  return ( 
         <div className='bg-[#99CDD8] text-[14px] text-black h-[60px] flex items-center cursor-pointer'>
             <div className='w-[55px] hover:text-[#657166]'>
                 Quiz
