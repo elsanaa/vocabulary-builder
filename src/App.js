@@ -5,6 +5,7 @@ import Search from './Search.js';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import CollectionPage from './CollectionPage.js';
+// import WordReview from './WordReview.js';
 
 function App() {
 
@@ -39,7 +40,9 @@ function App() {
           </div>
         </div>
       </div>
-
+    {/* <div>
+      <WordReview/>
+    </div> */}
 
 
 

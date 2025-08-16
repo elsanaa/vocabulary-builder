@@ -47,7 +47,7 @@ function Search() {
                     placeholder="Search"
                     value={searchBox}
                     onChange={(e) => setSearchBox(e.target.value)}
-                    className="w-[900px] rounded-[30px] outline-none pl-[30px] h-[60px] relative"
+                    className="w-[900px] rounded-[30px] outline-none pl-[30px] h-[60px]"
                 />
                 <div className="h-[60px] w-[100px] rounded-[30px] bg-[#CFDBC4] flex justify-center items-center ml-[5px] absolute cursor-pointer">
                     <FontAwesomeIcon icon={faSearch} />
