@@ -1,59 +1,7 @@
-import React, { useState } from 'react';
-import WordReview from './WordReview';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMultiply, faX } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';import { Link } from 'react-router-dom';
+;
 
 function Menu() {
-
-    let [display, setDisplay] = useState("onClick");
-
-    function onMouse() {
-        setDisplay("onClick")
-    }
-
-    function review() {
-        if (display === "onClick") {
-            return (
-                <div onClick={mouseOut} className='w-[80px] pl-[5px] hover:text-[#657166]'>
-                    WordReview
-                </div>
-            )
-        } else {
-            return (
-                <>
-                    <div className='w-[80px] pl-[5px] text-[#657166]'>
-                        WordReview
-                    </div>
-                    <div>
-
-                        <div className="flex justify-center items-center fixed z-1 left-0 top-0 w-full h-full overflow-auto bg-[rgb(0,0,0)] bg-[rgba(0,0,0,0.4)]">
-                            <div className="relative bg-orange-50 m-auto p-0 w-[400px] h-[500px] border-1 border-solid border-[#888] rounded-[15px]">
-                                <div className='w-[400px] h-[40px]'>
-                                    <div className='flex justify-center items-center w-[30px] h-[30px] float-right hover:bg-[#99CDD8] hover:rounded-[10px] m-[5px]' onClick={onMouse}>
-                                        <FontAwesomeIcon icon={faMultiply} />
-                                    </div>
-                                </div>
-
-                                <div className='flex justify-center'>
-                                    <div className='w-[300px]'>
-                                        <WordReview />
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </>
-
-            )
-        }
-    }
-
-    function mouseOut() {
-        setDisplay("noClick")
-    }
 
     return (
         <>
@@ -74,7 +22,7 @@ function Menu() {
                     Help
                 </div>
                 <div className='w-[80px] pl-[5px]'>
-                    {review()}
+                   <Link to="review">WordReview</Link>
                 </div>
             </div>
 
