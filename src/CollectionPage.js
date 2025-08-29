@@ -5,11 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 function CollectionPage() {
-  const { collectionBox } = useParams();
-  const store = Store();
-  const words = store[collectionBox];
-
-  const [display, setDisplay] = useState(null);
+  let { collectionBox } = useParams();
+  let store = Store();
+  let words = store[collectionBox];
+  let [display, setDisplay] = useState(null);
 
   function handleOpen(index) {
     setDisplay(index);
@@ -21,7 +20,7 @@ function CollectionPage() {
 
   return (
     <div>
-      <Link to="/">
+      <Link to="/Dictionary">
         <div className="bg-white h-[60px] w-[150px] flex justify-center items-center rounded-[15px]">
           <FontAwesomeIcon icon={faArrowLeft} />
         </div>
@@ -31,7 +30,7 @@ function CollectionPage() {
         {words.map((item, index) => {
           if (display === index) {
             return (
-              <div  onClick={handleClose}
+              <div onClick={handleClose}
                 key={index}
                 className="w-[250px] h-[200px] bg-[#CFDBC4] rounded-[20px] px-[10px] flex flex-col cursor-pointer">
                 <div className="border-b-[1px] border-solid border-white flex justify-between items-center h-[40px]">
@@ -44,7 +43,7 @@ function CollectionPage() {
               </div>
             );
           } else {
-        
+
             return (
               <div
                 key={index}

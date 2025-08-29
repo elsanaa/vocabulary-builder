@@ -32,7 +32,7 @@ function WordReview() {
     return (
         <>
             <div className="flex justify-center">
-                <div className='w-[320px] h-[450px] bg-red-100 rounded-[15px]'>
+                <div className='w-[320px] h-[450px] bg-[#C38EB4] rounded-[15px]'>
                     <div className='flex justify-center'>
                         <div className="w-[300px]">
                             <Link to="/">
