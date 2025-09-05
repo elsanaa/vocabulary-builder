@@ -4,7 +4,7 @@ import Store from "./Store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-function Vocabulary() {
+function GeneralVocabulary() {
     const store = Store();
 
     return (
@@ -17,7 +17,7 @@ function Vocabulary() {
             </Link>
             <div className="flex flex-col">
 
-                {Object.keys(store).slice(3, 6).map((key) => (
+                {Object.keys(store).slice(0, 3).map((key) => (
                     <Link to={key}>
                         <div className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px] ">
                             <div>
@@ -36,4 +36,4 @@ function Vocabulary() {
     );
 }
 
-export default Vocabulary;
+export default GeneralVocabulary;

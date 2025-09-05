@@ -20,7 +20,7 @@ function CollectionPage() {
 
   return (
     <div>
-      <Link to="/Dictionary">
+      <Link to="/General">
         <div className="bg-white h-[60px] w-[150px] flex justify-center items-center rounded-[15px]">
           <FontAwesomeIcon icon={faArrowLeft} />
         </div>

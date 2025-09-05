@@ -16,8 +16,8 @@ function Layout() {
             </div>
             <div className="flex justify-center bg-[#E8B298]">
                 <div className='w-[1200px]'>
-                    <div className='flex justify-center'>
-                        <div className='w-[900px] mt-[30px] mt-[100px] flex items-end'>
+                    <div className='flex justify-center min-h-[150px] mt-[60px]'>
+                        <div className='w-[900px] flex items-center'>
                             <Search />
                         </div>
                     </div>

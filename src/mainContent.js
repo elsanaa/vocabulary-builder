@@ -9,7 +9,7 @@ function MainContent() {
         <div>
             <div className=" border-b-[1px] border-solid border-[black] mb-[10px]">
                 <div className="font-black text-[30px] w-full">
-                    A dictionary for learning
+                    General Vocabulary for learning
                 </div>
 
                 <div className="text-[20px] text-gray-200">
@@ -18,7 +18,7 @@ function MainContent() {
                     designed to educate and entertain.
                 </div>
                 <div className="bg-red-200 w-[150px] my-[30px] h-[40px] rounded-[12px] flex justify-center items-center">
-                    <Link to="Dictionary">
+                    <Link to="General">
                         learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
                     </Link>
                 </div>
@@ -35,7 +35,7 @@ function MainContent() {
 
                     </div>
                     <div className="bg-red-200 w-[150px] h-[40px] my-[30px] rounded-[12px] flex justify-center items-center">
-                        <Link to="Vocabulary">
+                        <Link to="Master">
                             learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
                         </Link>
                     </div>
@@ -51,9 +51,9 @@ function MainContent() {
                     tailored to specific English proficiency tests.
                 </div>
                 <div className="bg-red-200 w-[150px] h-[40px] my-[30px] rounded-[12px] flex justify-center items-center">
-
-                    learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
-
+                    <Link to="Specialized">
+                        learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
+                    </Link>
                 </div>
             </div>
         </div>

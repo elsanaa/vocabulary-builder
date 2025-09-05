@@ -4,7 +4,7 @@ import Store from "./Store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-function EssentialFive0FourHighSchool() {
+function MasterVocabulary() {
     const store = Store();
 
     return (
@@ -12,12 +12,12 @@ function EssentialFive0FourHighSchool() {
         <div>
             <Link to="/">
                 <div className="hover:bg-gray-100 bg-white h-[60px] w-[150px] flex justify-center items-center rounded-[15px] mb-[30px]">
-                    <FontAwesomeIcon icon={faArrowLeft} />
+                    <FontAwesomeIcon icon={faArrowLeft}  />
                 </div>
             </Link>
             <div className="flex flex-col">
 
-                {Object.keys(store).slice(0, 3).map((key) => (
+                {Object.keys(store).slice(3, 6).map((key) => (
                     <Link to={key}>
                         <div className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px] ">
                             <div>
@@ -36,4 +36,4 @@ function EssentialFive0FourHighSchool() {
     );
 }
 
-export default EssentialFive0FourHighSchool;
+export default MasterVocabulary;
