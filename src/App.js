@@ -10,7 +10,6 @@ import MainContent from './mainContent.js';
 import MasterVocabulary from './MasterVocabulary.js';
 import SpecializedVocabulary from './SpecializedVocabulary.js';
 
-
 function App() {
 
   return (
@@ -31,6 +30,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+     
     </>
 
   )
