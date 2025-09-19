@@ -1,10 +1,13 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function MainContent() {
+
+
     return (
         <div>
             <div className=" border-b-[1px] border-solid border-[black] mb-[10px]">
@@ -18,11 +21,12 @@ function MainContent() {
                     designed to educate and entertain.
                 </div>
                 <div className="bg-red-200 w-[150px] my-[30px] h-[40px] rounded-[12px] flex justify-center items-center">
-                    <Link to="General">
+                    <Link to='/General' >
                         learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
                     </Link>
                 </div>
             </div>
+
             <div className="  border-b-[1px] border-solid border-[black] h-[236px] mb-[10px]">
                 <div className="float-right">
                     <div className="font-black text-[30px]">
@@ -57,6 +61,8 @@ function MainContent() {
                 </div>
             </div>
         </div>
+
+
     );
 }
 

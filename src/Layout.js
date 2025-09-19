@@ -4,14 +4,9 @@ import About from "./About";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import MainContent from "./mainContent";
 function Layout() {
-    let [vocab, setVocab] = useState("")
-     
-    useEffect(() => {
-        axios.get("http://localhost:5000/")
-        .then((res) => setVocab(res.data.vocab))
-        .catch((err) => console.log(err))
-    },[])
+   
     return (
         <div>
             <div className="fixed w-full">
@@ -35,9 +30,9 @@ function Layout() {
 
                     <div className="flex items-center">
                         <div className='flex justify-center items-start mt-[30px] flex-col'>
-                             <div className='w-[1200px] min-h-[500px] pt-[50px]'>
+                            <div className='w-[1200px] min-h-[500px] pt-[50px]'>
                                 <Outlet />
-                                {vocab}
+                             
                             </div>
                         </div>
                     </div>
