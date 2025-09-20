@@ -10,6 +10,7 @@ function GeneralVocabulary() {
     let [IELTS, setIELTS] = useState([])
     let [click, setClick] = useState(false)
     let [display, setDisplay] = useState(true)
+    let [open, setOpen] = useState("vocab")
 
     useEffect(() => {
         if (!click) return;
@@ -36,7 +37,7 @@ function GeneralVocabulary() {
                 className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px]">
                 <div className="font-black w-full">
                     <button>
-                        Essential
+                       IELTS
                     </button>
                 </div>
             </div>
@@ -66,29 +67,47 @@ function GeneralVocabulary() {
             </div>
         </div >
     }
-
-    let words;
-    if (IELTS.length > 0) {
-        words = IELTS.map((item, index) => (
-            <div key={index}
-                className="w-[150px] h-[90px] bg-[#CFDBC4] rounded-[20px] px-[10px] m-[10px] flex justify-center items-center font-black cursor-pointer">
-                {item.word}
-            </div>
-        ));
-    } else {
-        words = IELTS.map((item, index) => (
-            <div key={index}
-                className="w-[250px] h-[200px] bg-[#CFDBC4] rounded-[20px] px-[10px] cursor-pointer m-[10px]">
-                <div className="border-b-[1px] border-solid border-white flex justify-between items-center h-[40px]">
-                    <div>{item.word}</div>
-                    <div>{item.pronunciation}</div>
-                </div>
-                <div className="mt-[10px]">{item.meaning}</div>
-                <div className="text-orange-400 mt-[10px]">Example:</div>
-                <div>{item.example}</div>
-            </div>
-        ));
+    function handleOpen() {
+        setOpen("mean");
     }
+
+    function handleClose() {
+        setOpen("vocab");
+    }
+    function toggle() {
+        let words;
+        if (open === "vocab") {
+            if (IELTS.length > 0) {
+                words = IELTS.map((item, index) => (
+
+                    <div onClick={handleOpen} key={index}
+                        className="w-[150px] h-[90px] bg-[#CFDBC4] rounded-[20px] px-[10px] m-[10px] flex justify-center items-center font-black cursor-pointer">
+                        {item.word}
+                    </div>
+
+
+                ))
+            }
+            ;
+        } else {
+            words = IELTS.map((item, index) => (
+                <div onClick={() => handleClose("vocab")} key={index}
+                    className="w-[250px] h-[200px] bg-[#CFDBC4] rounded-[20px] px-[10px] cursor-pointer m-[10px]">
+                    <div className="border-b-[1px] border-solid border-white flex justify-between items-center h-[40px]">
+                        <div>{item.word}</div>
+                        <div>{item.pronunciation}</div>
+                    </div>
+                    <div className="mt-[10px]">{item.meaning}</div>
+                    <div className="text-orange-400 mt-[10px]">Example:</div>
+                    <div>{item.example}</div>
+                </div>
+            ));
+        }
+        return words;
+    }
+
+
+
 
     return (
         <div>
@@ -96,7 +115,7 @@ function GeneralVocabulary() {
                 {show}
             </div>
             <div className="flex flex-wrap">
-                {words}
+                {toggle()}
             </div>
         </div>
 
@@ -104,16 +123,16 @@ function GeneralVocabulary() {
 }
 export default GeneralVocabulary;
 
-{/* {Object.keys(store).slice(0, 3).map((key) => (
-                    <Link to={key}>
-                        <div className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px] ">
-                            <div>
-                                <div>
-                                    {key}
+//  {Object.keys(store).slice(0, 3).map((key) => (
+// <Link to={key}>
+//     <div className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px] ">
+//         <div>
+//             <div>
+//                 {key}
 
-                                </div>
-                            </div>
-                        </div>
+//             </div>
+//         </div>
+//     </div>
 
-                    </Link>
-                ))} */}
+// </Link>
+// ))} 
