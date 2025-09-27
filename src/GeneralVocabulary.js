@@ -9,35 +9,38 @@ function GeneralVocabulary() {
     // let store = Store();
     let [IELTS, setIELTS] = useState([])
     let [click, setClick] = useState(false)
-    let [display, setDisplay] = useState(true)
-    let [open, setOpen] = useState("vocab")
+    let [showCategories, setShowCategories] = useState(true)
+    let [openWord, setOpenWord] = useState(null)
 
     useEffect(() => {
         if (!click) return;
 
-        axios.get("http://localhost:5000/Vocab")
+        axios.get("http://localhost:5000/Vocabs")
 
-            .then((res) => setIELTS(res.data.IELTS))
+            .then((res) => {
+                setIELTS(res.data.IELTS)
+            })
 
         setClick(false)
     }, [click]);
 
-    let show;
-    if (display) {
-        show = <div>
+
+    let renderCards;
+    if (showCategories) {
+        renderCards = <div>
             <Link to='/'>
                 <div className="hover:bg-gray-100 bg-white h-[60px] w-[150px] flex justify-center items-center rounded-[15px] mb-[30px]">
                     <FontAwesomeIcon icon={faArrowLeft} />
                 </div>
             </Link>
             <div onClick={(e) => {
-                setDisplay(false)
+                setShowCategories(false)
                 setClick(true)
             }}
                 className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px]">
                 <div className="font-black w-full">
                     <button>
-                       IELTS
+                        IELTS
                     </button>
                 </div>
             </div>
@@ -58,8 +61,8 @@ function GeneralVocabulary() {
         </div>
     }
     else {
-        show = <div onClick={() => {
-            setDisplay(true)
+        renderCards = <div onClick={() => {
+            setShowCategories(true)
             setIELTS([])
         }}>
             <div className="hover:bg-gray-100 bg-white h-[60px] w-[150px] flex justify-center items-center rounded-[15px] mb-[30px]">
@@ -67,44 +70,51 @@ function GeneralVocabulary() {
             </div>
         </div >
     }
-    function handleOpen() {
-        setOpen("mean");
+    function openWordCard(word) {
+        setOpenWord(word);
+
+
     }
 
-    function handleClose() {
-        setOpen("vocab");
+    function closeWordCard() {
+        setOpenWord("close");
+
     }
-    function toggle() {
-        let words;
-        if (open === "vocab") {
-            if (IELTS.length > 0) {
-                words = IELTS.map((item, index) => (
 
-                    <div onClick={handleOpen} key={index}
-                        className="w-[150px] h-[90px] bg-[#CFDBC4] rounded-[20px] px-[10px] m-[10px] flex justify-center items-center font-black cursor-pointer">
-                        {item.word}
-                    </div>
-
-
-                ))
-            }
-            ;
-        } else {
-            words = IELTS.map((item, index) => (
-                <div onClick={() => handleClose("vocab")} key={index}
-                    className="w-[250px] h-[200px] bg-[#CFDBC4] rounded-[20px] px-[10px] cursor-pointer m-[10px]">
-                    <div className="border-b-[1px] border-solid border-white flex justify-between items-center h-[40px]">
-                        <div>{item.word}</div>
-                        <div>{item.pronunciation}</div>
-                    </div>
-                    <div className="mt-[10px]">{item.meaning}</div>
-                    <div className="text-orange-400 mt-[10px]">Example:</div>
-                    <div>{item.example}</div>
-                </div>
-            ));
+    function renderWordCards() {
+        let IELTSwords;
+        if (IELTS.length > 0) {
+            IELTSwords = IELTS.map((item, index) => {
+                if (openWord === item.word) {
+                    return (
+                        <div onClick={closeWordCard} key={index}
+                            className="w-[250px] min-h-[200px] bg-[#FCF0E3] rounded-[20px] px-[10px] m-[10px] cursor-pointer s-[10px]">
+                            <div className="border-b-[1px] border-solid border-white  flex justify-between items-center h-[40px]">
+                                <div className="pronunciation">{item.pronunciation}</div>
+                            </div>
+                            <div className="mt-[13px]">{item.meaning}</div>
+                            <div className="text-orange-400 mt-[10px]">Example:</div>
+                            <div>{item.example}</div>
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div onClick={() => openWordCard(item.word)} key={index}
+                            className="w-[160px] h-[99px] bg-[#FCF0DC] rounded-[20px] px-[10px] m-[10px] flex justify-center items-center cursor-pointer">
+                            {item.word}
+                        </div>
+                    );
+                }
+            });
         }
-        return words;
+
+        return IELTSwords;
     }
+
+
+
+
+
 
 
 
@@ -112,27 +122,14 @@ function GeneralVocabulary() {
     return (
         <div>
             <div>
-                {show}
+                {renderCards}
             </div>
             <div className="flex flex-wrap">
-                {toggle()}
+                {renderWordCards()}
+
             </div>
         </div>
 
     );
 }
 export default GeneralVocabulary;
-
-//  {Object.keys(store).slice(0, 3).map((key) => (
-// <Link to={key}>
-//     <div className="hover:bg-[#657166] w-[400px] h-[90px] my-[10px] bg-[#CFDBC4] font-black rounded-[15px] flex justify-start items-start pl-[8px] ">
-//         <div>
-//             <div>
-//                 {key}
-
-//             </div>
-//         </div>
-//     </div>
-
-// </Link>
-// ))} 

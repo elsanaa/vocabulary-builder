@@ -1,64 +1,34 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function MainContent() {
+    const [levels, setLevels] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/mainContent")
+            .then(res => setLevels(res.data.levels))
+
+    }, [])
+
 
 
     return (
         <div>
-            <div className=" border-b-[1px] border-solid border-[black] mb-[10px]">
-                <div className="font-black text-[30px] w-full">
-                    General Vocabulary for learning
-                </div>
-
-                <div className="text-[20px] text-gray-200">
-                    Whether you’re looking up a specific word or just browsing,<br />
-                    you’ll find a universe of friendly explanations and fun activities<br />
-                    designed to educate and entertain.
-                </div>
-                <div className="bg-red-200 w-[150px] my-[30px] h-[40px] rounded-[12px] flex justify-center items-center">
-                    <Link to='/General' >
-                        learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
-                    </Link>
-                </div>
-            </div>
-
-            <div className="  border-b-[1px] border-solid border-[black] h-[236px] mb-[10px]">
-                <div className="float-right">
-                    <div className="font-black text-[30px]">
-                        Master Vocabulary for Any English Test
-
+            <div>
+                {levels.map((lev, i) => (
+                    <div key={i} className="border-b-[1px] border-black mb-[10px]">
+                        <div className="font-black text-[30px] w-full">{lev.title}</div>
+                        <div className="text-[20px] text-gray-200 whitespace-pre-line">{lev.text}</div>
+                        <div className="bg-red-200 w-[150px] my-[30px] h-[40px] rounded-[12px] flex justify-center items-center">
+                            <Link to={lev.link}>
+                                learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
+                            </Link>
+                        </div>
                     </div>
-                    <div className="text-[20px] text-gray-200">
-                        Specialized collections for Duolingo, Pearson, IELTS, TOEFL, and more.<br />
-                        Build your vocabulary efficiently with our targeted approach.
-
-                    </div>
-                    <div className="bg-red-200 w-[150px] h-[40px] my-[30px] rounded-[12px] flex justify-center items-center">
-                        <Link to="Master">
-                            learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            <div className="  border-b-[1px] border-solid border-[black] h-[250px] mb-[10px]">
-
-                <div className="font-black text-[30px]">
-                    Specialized Vocabulary Collections
-                </div>
-                <div className="text-[20px] text-gray-200">
-                    Choose from our extensive library of vocabulary collections <br />
-                    tailored to specific English proficiency tests.
-                </div>
-                <div className="bg-red-200 w-[150px] h-[40px] my-[30px] rounded-[12px] flex justify-center items-center">
-                    <Link to="Specialized">
-                        learn more <FontAwesomeIcon icon={faArrowRight} className="ml-[5px]" />
-                    </Link>
-                </div>
+                ))}
             </div>
         </div>
 

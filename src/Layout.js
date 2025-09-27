@@ -2,9 +2,7 @@ import Menu from "./Menu";
 import Search from "./Search";
 import About from "./About";
 import { Outlet } from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import MainContent from "./mainContent";
+
 function Layout() {
    
     return (
@@ -32,7 +30,6 @@ function Layout() {
                         <div className='flex justify-center items-start mt-[30px] flex-col'>
                             <div className='w-[1200px] min-h-[500px] pt-[50px]'>
                                 <Outlet />
-                             
                             </div>
                         </div>
                     </div>
