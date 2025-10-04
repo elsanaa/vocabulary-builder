@@ -1,85 +1,117 @@
 import React, { useEffect, useState } from 'react';
-import Store from './Store';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMultiply } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-
 function WordReview() {
-    let { Essential, HighSchool, Five0Four } = Store();
-    let allWords = [...Essential, ...HighSchool, ...Five0Four];
-    let [randomWord, setRandomWord] = useState();
-    let [showMeaning, setShowMeaning] = useState(false);
+    const [IELTS, setIELTS] = useState([]);
+    let [display, setDisplay] = useState([]);
+    let [showMeaning, setShowMeaning] = useState("onlyVocab")
 
-    function getRandomElement() {
-        let randomIndex = Math.floor(Math.random() * allWords.length);
-        return allWords[randomIndex];
-    };
-
-    function selectRandomName() {
-        let randomUser = getRandomElement(allWords);
-        setRandomWord(randomUser);
-        setShowMeaning(false);
-    };
 
     useEffect(() => {
-        selectRandomName();
-    }, []);
+        axios.get("http://localhost:5000/Vocabs")
+            .then(res => {
+                const words = res.data.IELTS;
+                setIELTS(words);
 
-    function mean() {
-        setShowMeaning(!showMeaning)
+
+                if (words.length > 0) {
+                    let randomIndex = Math.floor(Math.random() * words.length);
+                    setDisplay(words[randomIndex]);
+                }
+            })
+
+    }, [])
+
+    const nextWord = () => {
+        if (IELTS.length > 0) {
+            let randomIndex = Math.floor(Math.random() * IELTS.length);
+            setDisplay(IELTS[randomIndex]);
+        }
     };
+
+
+    function randomWords() {
+        if (showMeaning === "onlyVocab") {
+            return (
+                <div>
+                    <div
+                        onClick={() => setShowMeaning("mean")}>
+                        <div className='bg-yellow-50 text-black flex justify-center items-center h-[370px] rounded-[15px] py-[10px]'>
+                            {display.word}
+                        </div>
+
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div onClick={() => setShowMeaning("onlyVocab")}
+                    className='bg-yellow-50 text-black h-[370px] rounded-[15px] py-[10px]'>
+                    <div className='flex justify-between mx-[15px] border-solid border-b-[1px] border-[gray] h-[30px] items-center'>
+                        <div>
+                            {display.word}
+                        </div>
+                        <div>
+                            {display.pronunciation}
+                        </div>
+                    </div>
+                    <div className='flex px-[10px] flex-col'>
+                        {display.meaning}
+                        <div className='text-orange-200'>
+                            Example :
+                        </div>
+                        <div>{display.example}</div>
+                    </div>
+                </div>
+            )
+        }
+    }
 
     return (
         <>
             <div className="flex justify-center">
-                <div className='w-[320px] h-[450px] bg-[#C38EB4] rounded-[15px]'>
-                    <div className='flex justify-center'>
+                <div className="w-[320px] h-[460px] bg-[#C38EB4] rounded-[15px]">
+                    <div className="flex justify-center">
                         <div className="w-[300px]">
-                            <Link to="/">
-                                <div className='w-[20px] h-[20px] hover:bg-[#99CDD8] my-[2px] rounded-[5px]'>
-                                    <div className='flex justify-center pt-[3px]'>
-                                        <FontAwesomeIcon icon={faMultiply} />
-                                    </div>
-                                </div>
+                            <Link to='/'>
+                                <FontAwesomeIcon icon={faMultiply} />
                             </Link>
+                            <div>
+                                {randomWords()}
+                            </div>
 
-                            <div className='w-[300px] h-[350px] bg-[#99CDD8] rounded-[10px] flex justify-center font-black text-[20px] cursor-pointer' onClick={mean}>
-                                {randomWord ? (showMeaning ?
-                                    <>
-                                        <div className='flex justify-center'>
-                                            <div className='w-[250px]'>
-                                                <div className='border-b-[1px] border-solid border-black w-[250px] h-[40px] flex items-center'>
-                                                    {randomWord.word}
-                                                </div>
-                                                <div className='mt-[5px] font-medium'>
-                                                    {randomWord.meaning}
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div>
-
-                                        </div>
-                                    </>
-                                    :
-                                    <div className='flex items-center'>
-                                        {randomWord.word}
+                            <div className='mt-[8px]'>
+                                <div className="flex">
+                                    <div className='bg-red-300 flex justify-center items-center rounded-[15px] w-[120px] mr-[40px] ml-[12px] h-[50px]'>
+                                        NO
                                     </div>
-                                ) : ""}
-                            </div>
-                            <div className='flex flex-row justify-between mt-[10px]'>
-                                <div
-                                    className='w-[140px] h-[50px] bg-red-300 rounded-[10px] flex justify-center items-center cursor-pointer'>
-                                    NO
-                                </div>
-                                <div className='w-[140px] h-[50px] bg-green-200 rounded-[10px] flex justify-center items-center cursor-pointer' onClick={selectRandomName}>
-                                    YES
+                                    <div
+                                        onClick={nextWord}
+                                        className=" bg-green-300 flex justify-center items-center rounded-[15px] w-[120px] h-[50px] "
+                                    >
+                                        YES
+                                    </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
+            {/* <div className="flex justify-center">
+                <div className='w-[320px] h-[450px] bg-[#C38EB4] rounded-[15px]'>
+                    <div className='flex justify-center'>
+                        <div className="w-[300px]">
+
+                            {renderWordCards()}
+
+                        </div>
+                    </div>
+                </div>
+            </div> */}
         </>
     );
 }
