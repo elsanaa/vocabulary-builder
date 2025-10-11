@@ -7,7 +7,9 @@ var corsOptions = {
   origin: 'http://localhost:3000',
 
 }
+let  reviewedWord = [];
 app.use(cors(corsOptions))
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.json({
@@ -17,6 +19,20 @@ app.get('/', (req, res) => {
   )
 })
 
+app.get('/review', (req, res) => {
+  //check
+})
+
+app.post('/review', (req, res) => {
+
+  reviewedWord.push(req.body.word)
+  
+  console.log(reviewedWord)
+
+  res.json({
+    status: "success"
+  })
+})
 app.get('/Vocabs', (req, res) => {
   res.json({
     IELTS: [
